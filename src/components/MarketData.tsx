@@ -5,9 +5,13 @@ const MarketData = () => {
   let { GSdata } = useGSDataStore();
   return (
     <>
-      {Object.keys(GSdata).map((keyy) => {
-        return <Table key={keyy} dataa={GSdata[keyy]} />;
-      })}
+      <div className="container">
+        <div className="row">
+          {Object.keys(GSdata).map((keyy) => {
+            return <Table key={keyy} dataa={GSdata[keyy]} />;
+          })}
+        </div>
+      </div>
     </>
   );
 };

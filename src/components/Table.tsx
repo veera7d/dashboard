@@ -8,34 +8,36 @@ const Table = ({ dataa }: Props) => {
     return null;
   }
   return (
-    <table className="table">
-      <thead>
-        <tr>
+    <div className="col">
+      <table className="table">
+        <thead>
+          <tr>
+            {dataa.length != 0 ? (
+              dataa[0].map((d, index) => {
+                return <th key={index}>{d}</th>;
+              })
+            ) : (
+              <></>
+            )}
+          </tr>
+        </thead>
+        <tbody className="table table-group-divider">
           {dataa.length != 0 ? (
-            dataa[0].map((d, index) => {
-              return <th key={index}>{d}</th>;
+            dataa.slice(1).map((da, index) => {
+              return (
+                <tr key={index}>
+                  {da.map((d, i) => (
+                    <td key={i}>{d}</td>
+                  ))}
+                </tr>
+              );
             })
           ) : (
             <></>
           )}
-        </tr>
-      </thead>
-      <tbody className="table table-group-divider">
-        {dataa.length != 0 ? (
-          dataa.slice(1).map((da, index) => {
-            return (
-              <tr key={index}>
-                {da.map((d, i) => (
-                  <td key={i}>{d}</td>
-                ))}
-              </tr>
-            );
-          })
-        ) : (
-          <></>
-        )}
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   );
 };
 
